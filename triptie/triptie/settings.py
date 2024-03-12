@@ -1,5 +1,8 @@
 from pathlib import Path
 import os
+import django.contrib.auth.hashers as hasher
+from django.contrib.auth.hashers import PBKDF2PasswordHasher, PBKDF2SHA1PasswordHasher
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tripapp',
-    'whitenoise.runserver_nostatic', # Add your app here
+    'whitenoise.runserver_nostatic',
+
 ]
 
 MIDDLEWARE = [

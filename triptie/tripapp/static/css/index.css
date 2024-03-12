@@ -204,3 +204,71 @@ header .logo
     font-size: 1.5em;
   }
 }
+/* Styles for the pop-up forms */
+.form-popup {
+  display: none;
+  position: fixed;
+  z-index: 9;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border: 2px solid #f49003;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+  max-width: 400px;
+  padding: 20px;
+}
+
+.form-container h1 {
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #f49003;
+  text-align: center;
+}
+
+.form-container input[type=text], 
+.form-container input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-container .btn {
+  background-color: #f49003;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+  font-size: 1em;
+  margin-top: 10px;
+}
+
+.form-container .btn:hover {
+  background-color: #f27003;
+}
+
+.form-container .cancel {
+  background-color: #ccc;
+}
+
+.form-container .cancel:hover {
+  background-color: #bbb;
+}
+.menu ul li a {
+  text-decoration: none;
+  font-size: 24px;
+  color: #111;
+  cursor: pointer; 
+}
