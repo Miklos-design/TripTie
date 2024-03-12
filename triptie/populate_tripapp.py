@@ -2,7 +2,7 @@ import os
 import django
 import datetime
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "your_project_name.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "triptie.settings")
 
 django.setup()
 

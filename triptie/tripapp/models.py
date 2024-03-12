@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db import models
 
+
 class UserProfile(models.Model):
     Gender_Choices = [
         ('M', 'Male'),
@@ -55,9 +56,6 @@ class Comment(models.Model):
     trip_plan = models.ForeignKey(TripPlan, on_delete=models.CASCADE)
     comment_content = models.CharField(max_length=COMMENT_MAX_VALUE)
     created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Comment by {self.user.username} on {self.travel_plan.title}"
 
     class Meta:
         ordering = ['created_at']
