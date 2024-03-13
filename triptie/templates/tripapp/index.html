@@ -1,0 +1,76 @@
+{% load static %}
+{% load tripapp_template_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+    <title>Document</title>
+</head>
+<body>
+<section class="showcase">
+    <header>
+        <h2 class="logo">TripTie</h2>
+        <div class="toggle"></div>
+    </header>
+    <video src="{% static 'media/video.mp4' %}" muted loop autoplay></video>
+    <div class="overlay"></div>
+    <div class="text">
+        <h2>Never Stop </h2>
+        <h3>Exploring The World</h3>
+        <p>Welcome to TripTie, your ultimate destination for unforgettable travel experiences! Whether you're dreaming
+            of relaxing on pristine beaches, exploring vibrant cities, or embarking on thrilling adventures, you can
+            find your right spot.
+            Discover a world of possibilities and find your travel buddy.
+            Browse our travel guides and articles for insider tips, hidden gems, and must-see attractions in each
+            destination.</p>
+        <a href="{% url 'tripapp:explore' %}">Explore</a>
+    </div>
+    <ul class="social">
+        <li><a href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png" onclick="shareOnFacebook()"></a></li>
+        <li><a href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png" onclick="tweetShare()"></a></li>
+        <li><a href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png"></a></li>
+    </ul>
+</section>
+<div class="menu">
+    <ul>
+        <li><a href="{% url 'tripapp:index' %}">Home</a></li>
+        <li><a href="{% url 'tripapp:profile' %}">Profile</a></li>
+        <li><a onclick="openForm('loginForm')">Login | Register</a></li>
+        <li><a href="{% url 'tripapp:about' %}">About</a></li>
+    </ul>
+</div>
+<!-- Login Form -->
+<div id="loginForm" class="form-popup">
+    <form action="/login" class="form-container" onsubmit="return false;">
+        <h1>Login</h1>
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+        <button type="submit" class="btn">Login</button>
+        <!-- Updated Register button to call openRegisterForm() -->
+        <button type="button" class="btn cancel" onclick="openRegisterForm()">Register</button>
+    </form>
+</div>
+
+<!-- Register Form -->
+<div id="registerForm" class="form-popup">
+    <form action="/register" class="form-container" onsubmit="return false;">
+        <h1>Register</h1>
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+        <button type="submit" class="btn">Register</button>
+        <!-- Updated Close button to call closeRegisterForm() -->
+        <button type="button" class="btn cancel" onclick="closeRegisterForm()">Close</button>
+    </form>
+</div>
+
+
+<script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

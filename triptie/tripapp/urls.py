@@ -16,8 +16,9 @@ Including another URLconf
 from django.urls import path
 from tripapp import views
 
+app_name = 'tripapp'
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.IndexView.as_view(), name='index'),
     path('about/', views.about, name='about'),
     path('login/', views.login, name='login'),
     path('profile/', views.profile, name='profile'),
