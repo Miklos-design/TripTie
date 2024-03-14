@@ -20,7 +20,7 @@ from tripapp import views  # Import views from your tripapp
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tripapp/', include('tripapp.urls')),
-    path('', views.home, name='home'),  # Add this line for the homepage
-    path('explore/', views.explore_view, name='explore'),
+    # path('', views.home, name='home'),
+    # path('explore/', views.explore_view, name='explore'),
 ]
 
