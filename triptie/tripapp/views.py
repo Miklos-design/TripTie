@@ -28,10 +28,10 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import requests
 
-# YOUTUBE_API_KEY = 'AIzaSyDbSCu3VjTPVTS89Nz0K-fK7Jn4SLcUc1o'
+YOUTUBE_API_KEY = 'AIzaSyDbSCu3VjTPVTS89Nz0K-fK7Jn4SLcUc1o'
 # this is full
 # new one
-YOUTUBE_API_KEY = 'AIzaSyDCVUfD2upIH9UJtTRgvi-Ufpll603WF4w'
+# YOUTUBE_API_KEY = 'AIzaSyDCVUfD2upIH9UJtTRgvi-Ufpll603WF4w'
 
 @require_http_methods(["GET"])
 def search_youtube_for_city(request):
