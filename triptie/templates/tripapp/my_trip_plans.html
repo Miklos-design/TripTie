@@ -44,9 +44,15 @@
                             {% for comment in trip_plan.comments %}
                                 <div class="card mb-2">
                                     <div class="card-body">
-{#                                        <img src="{{ comment.user.userprofile.picture.url }}"#}
-{#                                             alt="{{ comment.user.username }}" class="rounded-circle" width="50"#}
-{#                                             height="50">#}
+                                        {% if trip_plan.user.userprofile.picture %}
+                                            <img src="{{ comment.user.userprofile.picture.url }}"
+                                                 alt="{{ comment.user.username }}" class="rounded-circle" width="50"
+                                                 height="50">
+                                        {% else %}
+                                            <img src="{% static 'images/default_avatar.jpg' %}"
+                                                 alt="{{ comment.user.username }}" class="rounded-circle" width="50"
+                                                 height="50">
+                                        {% endif %}
                                         <p class="card-text">{{ comment.comment_content }}</p>
                                         <small class="text-muted">Comment by: {{ comment.user.username }}</small>
                                         <small class="text-muted">Posted
