@@ -9,29 +9,38 @@
     <div class="container mt-4">
         <h1>My Trip Plans</h1>
         <hr>
-        {% if trip_plans %}
+        {% if detailed_trip_plans %}
             <div class="d-flex flex-column align-items-center">
-                {% for trip_plan in trip_plans %}
+                {% for detailed_trip_plan in detailed_trip_plans %}
                     <div class="card mb-4" style="width: 100%; max-width: 600px;">
-                        {% if trip_plan.image %}
-                            <img src="{{ MEDIA_URL }}{{ trip_plan.image.url }}" class="card-img-top"
-                                 alt="{{ trip_plan.title }}">
+                        {% if detailed_trip_plan.trip_plan.image %}
+                            <img src="{{ MEDIA_URL }}{{ detailed_trip_plan.trip_plan.image.url }}" class="card-img-top"
+                                 alt="{{ detailed_trip_plan.trip_plan.title }}">
                         {% else %}
                             <img src="https://i.ibb.co/FKrsX1r/hot-air-balloon-4095513-1280.jpg" class="card-img-top"
                                  alt="Default Image">
                         {% endif %}
                         <div class="card-body">
-                            <h5 class="card-title">{{ trip_plan.title }}</h5>
-                            <p class="card-text">{{ trip_plan.description }}</p>
+                            <h5 class="card-title">{{ detailed_trip_plan.trip_plan.title }}</h5>
+                            <p class="card-text">{{ detailed_trip_plan.trip_plan.description }}</p>
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">Trip to {{ trip_plan.destination_city }}</small>
-                                <small class="text-muted">{{ trip_plan.start_date }} - {{ trip_plan.end_date }}</small>
+                                <small class="text-muted">Trip
+                                    to {{ detailed_trip_plan.trip_plan.destination_city }}</small>
+                                <small class="text-muted">{{ detailed_trip_plan.trip_plan.start_date }}
+                                    - {{ detailed_trip_plan.trip_plan.end_date }}</small>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <a href="#" class="btn btn-outline-primary btn-sm">Like</a>
-                                <form action="{% url 'tripapp:add_comment' trip_plan.id %}" method="post">
+                                <form action="{% url 'tripapp:like_trip_plan' detailed_trip_plan.trip_plan.id %}"
+                                      method="post">
+                                    <button type="submit"
+                                            class="btn {% if detailed_trip_plan.liked %}btn-primary{% else %}btn-secondary{% endif %}">
+                                        Like
+                                    </button>
+                                </form>
+                                <form action="{% url 'tripapp:add_comment' detailed_trip_plan.trip_plan.id %}"
+                                      method="post">
                                     <div class="input-group">
                                         <textarea class="form-control" name="comment_content" rows="2"
                                                   placeholder="Add a comment..." required></textarea>
@@ -41,7 +50,7 @@
                             </div>
                             <hr>
                             <h6>Comments:</h6>
-                            {% for comment in trip_plan.comments %}
+                            {% for comment in detailed_trip_plan.comments %}
                                 <div class="card mb-2">
                                     <div class="card-body">
                                         {% if trip_plan.user.userprofile.picture %}
@@ -67,9 +76,8 @@
                 {% endfor %}
             </div>
         {% else %}
-            <p>You have not liked any trip plans yet.</p>
+            <p>You don't have any trip plans yet.</p>
         {% endif %}
     </div>
-
 
 {% endblock %}

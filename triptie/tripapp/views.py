@@ -121,13 +121,16 @@ class EditProfileView(View):
 class MyTripPlansView(View):
     @method_decorator(login_required)
     def get(self, request, username):
-
         trip_plans = TripPlan.objects.filter(user=request.user).order_by('-start_date')
         trip_plans = trip_plans.prefetch_related(
             Prefetch('comment_set', queryset=Comment.objects.all(), to_attr='comments')
         )
+        user = request.user
+        detailed_trip_plans = []
+        for plan in trip_plans:
+            detailed_trip_plans.append(get_trip_plan_details(plan.id, user))
 
-        return render(request, 'tripapp/my_trip_plans.html', {'trip_plans': trip_plans})
+        return render(request, 'tripapp/my_trip_plans.html', {'detailed_trip_plans': detailed_trip_plans})
 
 
 class MyLikesView(View):
@@ -195,8 +198,6 @@ class TripPlanSearch(View):
                 is_private=False
             ).distinct().order_by('start_date')
 
-
-
             # liked_trip_plans = []
             # user = request.user
             # for trip_plan in trip_plans:
@@ -223,6 +224,26 @@ class AddCommentView(View):
         else:
             print(form.errors)
             return redirect(request.META.get('HTTP_REFERER', 'tripapp:index'))
+
+    def get(self, request, trip_plan_id):
+        form = CommentForm()
+        return redirect(request.META.get('HTTP_REFERER', 'tripapp:index'))
+
+
+class LikeTripPlan(View):
+    @method_decorator(login_required)
+    def post(self, request, trip_plan_id):
+        trip_plan = TripPlan.objects.get(id=trip_plan_id)
+        user = request.user
+        liked = LikePost.objects.filter(user=user, trip_plan=trip_plan).exists()
+        if liked:
+            # User already liked this trip plan, unlike it
+            LikePost.objects.filter(user=user, trip_plan=trip_plan).delete()
+        else:
+            # User hasn't liked this trip plan yet, like it
+            LikePost.objects.create(user=user, trip_plan=trip_plan)
+
+        return redirect(request.META.get('HTTP_REFERER', 'tripapp:index'))
 
     def get(self, request, trip_plan_id):
         form = CommentForm()
@@ -265,3 +286,14 @@ def search_youtube_for_city(request):
     response = requests.get(search_url, params=params)
     videos = response.json().get('items', [])
     return JsonResponse(videos, safe=False)
+
+
+def get_trip_plan_details(trip_plan_id, user):
+    trip_plan = TripPlan.objects.get(id=trip_plan_id)
+    comments = Comment.objects.filter(trip_plan=trip_plan)
+    liked = LikePost.objects.filter(user=user, trip_plan=trip_plan).exists()
+    return {
+        'trip_plan': trip_plan,
+        'comments': comments,
+        'liked': liked,
+    }
