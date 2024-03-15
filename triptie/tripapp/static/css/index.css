@@ -295,7 +295,6 @@ header .logo
 {
   color: #f46703;
 }
-<<<<<<< HEAD
 /* Responsive adjustments */
 @media (max-width: 1200px) {
     .video-wrapper {
@@ -307,7 +306,6 @@ header .logo
     .video-wrapper {
         max-width: 100%; /* Each video takes full width on small screens */
     }
-=======
 
 @media (max-width: 800px)
 {
@@ -324,5 +322,4 @@ header .logo
   {
     font-size: 1.5em;
   }
->>>>>>> mainproject/master
 }
