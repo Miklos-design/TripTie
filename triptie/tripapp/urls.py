@@ -13,6 +13,7 @@ urlpatterns = [
     path('add_plan/<username>', views.AddPlan.as_view(), name='add_plan'),
     path('success/', views.SuccessView.as_view(), name='success'),
     path('trip_plan_search/', views.TripPlanSearch.as_view(), name='trip_plan_search'),
+    path('add_comment/<int:trip_plan_id>', views.AddCommentView.as_view(), name='add_comment'),
     path('messages/', views.messages, name='messages'),
     path('explore/', views.explore, name='explore'),
     path('search_youtube/', views.search_youtube_for_city, name='search_youtube'),

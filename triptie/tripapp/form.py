@@ -23,6 +23,9 @@ class TripPlanForm(forms.ModelForm):
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
 
+    def __str__(self):
+        return self.username
+
     class Meta:
         model = User
         fields = ('username', 'email', 'password')

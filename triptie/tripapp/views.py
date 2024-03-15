@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.db.models import Q
+from django.db.models import Q, Prefetch
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.utils.decorators import method_decorator
@@ -9,8 +9,8 @@ from django.http import JsonResponse
 from .explorePage import search_youtube_for_city
 from django.shortcuts import render
 import requests
-from tripapp.form import UserProfileForm, TripPlanForm, TripPlanSearchForm
-from tripapp.models import UserProfile, TripPlan, LikePost
+from tripapp.form import UserProfileForm, TripPlanForm, TripPlanSearchForm, CommentForm
+from tripapp.models import UserProfile, TripPlan, LikePost, Comment
 
 
 class IndexView(View):
@@ -121,7 +121,11 @@ class EditProfileView(View):
 class MyTripPlansView(View):
     @method_decorator(login_required)
     def get(self, request, username):
+
         trip_plans = TripPlan.objects.filter(user=request.user).order_by('-start_date')
+        trip_plans = trip_plans.prefetch_related(
+            Prefetch('comment_set', queryset=Comment.objects.all(), to_attr='comments')
+        )
 
         return render(request, 'tripapp/my_trip_plans.html', {'trip_plans': trip_plans})
 
@@ -185,11 +189,14 @@ class TripPlanSearch(View):
             query = form.cleaned_data['query']
             # Exclude private trip plans
             trip_plans = TripPlan.objects.filter(
-                Q(title__icontains=query) |  # 使用 Q 对象实现 OR 查询
-                Q(description__icontains=query) |  # 在描述字段中进行模糊查询
-                Q(destination_city__icontains=query),  # 在目的地城市字段中进行模糊查询
+                Q(title__icontains=query) |
+                Q(description__icontains=query) |
+                Q(destination_city__icontains=query),
                 is_private=False
             ).distinct().order_by('start_date')
+
+
+
             # liked_trip_plans = []
             # user = request.user
             # for trip_plan in trip_plans:
@@ -198,6 +205,28 @@ class TripPlanSearch(View):
             return render(request, 'tripapp/trip_plan_search.html', {'trip_plans': trip_plans, 'query': query})
 
         return render(request, 'tripapp/trip_plan_search.html', {'form': form})
+
+
+class AddCommentView(View):
+    @method_decorator(login_required)
+    def post(self, request, trip_plan_id):
+        form = CommentForm(request.POST)
+        print(form)
+        if form.is_valid():
+            trip_plan = TripPlan.objects.get(id=trip_plan_id)
+            comment = form.save(commit=False)
+            comment.trip_plan = trip_plan
+            comment.user = request.user
+            print(comment.comment_content)
+            comment.save()
+            return redirect(request.META.get('HTTP_REFERER', 'tripapp:index'))
+        else:
+            print(form.errors)
+            return redirect(request.META.get('HTTP_REFERER', 'tripapp:index'))
+
+    def get(self, request, trip_plan_id):
+        form = CommentForm()
+        return redirect(request.META.get('HTTP_REFERER', 'tripapp:index'))
 
 
 def weather(request):
