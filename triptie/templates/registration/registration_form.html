@@ -5,47 +5,34 @@
 {% endblock %}
 
 {% block body_block %}
-<div class="jumbotron p-4">
+<div class="header">
     <div class="container">
-        <h1 class="jumbotron-heading">Register Here</h1>
+        <h1>Register Here</h1>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="form-group" >
-            <form role="form"  method="post" action=".">
-<!--                {% csrf_token %}-->
-                <div class="form-group">
-                    <p class="required">
-                        <label class="required" for="id_username">Username:</label>
-                        <input class="form-control" id="id_username" maxlength="30" name="username" type="text" />
-                        <span class="helptext">
-                            Required. 30 characters or fewer.
-                            Letters, digits and @/./+/-/_ only.
-                        </span>
-                    </p>
-                    <p class="required">
-                        <label class="required" for="id_email">E-mail:</label>
-                        <input class="form-control" id="id_email" name="email" type="email" />
-                    </p>
-                    <p class="required">
-                        <label class="required" for="id_password1">Password:</label>
-                        <input class="form-control" id="id_password1" name="password1" type="password" />
-                    </p>
-                    <p class="required">
-                        <label class="required" for="id_password2">Password confirmation:</label>
-                        <input class="form-control" id="id_password2" name="password2" type="password" />
-                        <span class="helptext">
-                            Enter the same password as before, for verification.
-                        </span>
-                    </p>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+<div class="container" style="text-align: center;">
+    <form class="form-signin" role="form" method="post" action=".">
+        <!-- {% csrf_token %} -->
+        <h4 style="margin-bottom: 20px;">Register</h4>
 
-            {{ form.errors }}
+        <label for="id_username" class="sr-only">Username</label>
+        <input type="text" name="username" id="id_username" class="form-control" placeholder="Username" required autofocus>
+
+        <label for="id_email" class="sr-only">Email address</label>
+        <input type="email" name="email" id="id_email" class="form-control" placeholder="Email address" required>
+
+        <label for="id_password1" class="sr-only">Password</label>
+        <input type="password" name="password1" id="id_password1" class="form-control" placeholder="Password" required>
+
+        <label for="id_password2" class="sr-only">Confirm Password</label>
+        <input type="password" name="password2" id="id_password2" class="form-control" placeholder="Confirm Password" required>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">Register</button>
+
+        <div style="text-align: center;">
+            <a href="{% url 'auth_login' %}" style="color: rgb(120, 113, 113);">Already have an account? Login here</a>
         </div>
-    </div>
+    </form>
 </div>
 {% endblock %}

@@ -6,6 +6,10 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+html, body {
+  margin: 0;
+  padding: 0;
+}
 header
 {
   position: absolute;
@@ -18,6 +22,7 @@ header
   justify-content: space-between;
   align-items: center;
 }
+
 header .logo
 {
   color: #fff;
@@ -124,7 +129,7 @@ header .logo
   text-decoration: none;
   font-weight: 500;
   margin-top: 10px;
-  color: #111;
+  color: #000000;
   letter-spacing: 2px;
   transition: 0.2s;
 }
@@ -187,11 +192,19 @@ header .logo
 {
   color: #f48803;
 }
+
 .container {
-  max-width: 400px; /* Limit width of the form */
-  margin: 0 auto; /* Center the form horizontally */
-  padding: 20px; /* Add padding */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%; /* Adjust the width as needed */
+  max-width: 600px; /* Set a maximum width if necessary */
+  height: 40%; /* Adjust the height as needed */
+  margin: 0 auto; /* Center horizontally */
 }
+
+
 
 .form-signin {
   background-color: #f7f7f7; /* Light gray background */
@@ -226,10 +239,5 @@ header .logo
 
 .form-signin button:hover {
   background-color: #cc6e00; /* Darker orange on hover */
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
 }
 
