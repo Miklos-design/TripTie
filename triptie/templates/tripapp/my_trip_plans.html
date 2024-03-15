@@ -31,6 +31,10 @@
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
                                 <a href="#" class="btn btn-outline-primary btn-sm">Like</a>
+                                <li><a href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png" onclick="shareOnFacebook()"></a></li>
+                                <li><a href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png" onclick="tweetShare()"></a></li>
+                                <li><a href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png" onclick="ins()"></a></li>
+                                
                                 <form action="{% url 'tripapp:add_comment' trip_plan.id %}" method="post">
                                     <div class="input-group">
                                         <textarea class="form-control" name="comment_content" rows="2"

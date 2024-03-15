@@ -27,9 +27,9 @@
          <a href="{% url 'tripapp:explore' %}">Explore</a>
     </div>
     <ul class="social">
-      <li><a href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png" onclick="shareOnFacebook()"></a></li>
-      <li><a href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png" onclick="tweetShare()"></a></li>
-      <li><a href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png"></a></li>
+      <li style="list-style: none; margin: 0; padding: 0;"><a href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png" onclick="shareOnFacebook()" style="height: 31px;"></a></li>
+      <li style="list-style: none; margin: 0; padding: 0;"><a href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png" onclick="tweetShare()" style="height: 31px;"></a></li>
+      <li style="list-style: none; margin: 0; padding: 0;"><a href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png" style="height: 31px;"></a></li>
     </ul>
   </section>
   <div class="menu">
@@ -50,6 +50,9 @@
       var url = encodeURIComponent(window.location.href);
       window.open('https://www.facebook.com/sharer/sharer.php?u=' + url, '_blank');
   }
+  function ins() {
+      window.open('https://www.instagram.com');
+  } 
 </script>
 </body>
 </html>
