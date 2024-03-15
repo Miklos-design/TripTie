@@ -37,6 +37,7 @@
             <li><a href="{% url 'tripapp:profile' user.username %}">Profile</a></li>
             <li><a href="{% url 'auth_logout' %}">Logout</a></li>
             <li><a href="{% url 'tripapp:add_plan' user.username %}">Add a Plan</a></li>
+            <li><a href="{% url 'tripapp:trip_plan_search'  %}">Search</a></li>
         {% else %}
             <li><a href="{% url 'auth_login' %}">Login</a></li>
             <li><a href="{% url 'registration_register' %}">Register</a></li>

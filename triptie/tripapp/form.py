@@ -12,12 +12,12 @@ class TripPlanForm(forms.ModelForm):
                                        help_text="Please enter the city of the destination.")
     description = forms.CharField(widget=forms.Textarea, max_length=TripPlan.DESCRIPTION_MAX_VALUE,
                                   help_text="Please enter the description")
-    is_private = forms.BooleanField(initial=False)
+    is_private = forms.BooleanField(initial=False, required=False)
     image = forms.ImageField(required=True)
 
     class Meta:
         model = TripPlan
-        fields = ['title', 'start_date', 'end_date', 'destination_city', 'description', 'is_private']
+        fields = ['title', 'start_date', 'end_date', 'destination_city', 'description', 'is_private', 'image']
 
 
 class UserForm(forms.ModelForm):
@@ -25,7 +25,7 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password',)
+        fields = ('username', 'email', 'password')
 
 
 class UserProfileForm(forms.ModelForm):
@@ -36,7 +36,7 @@ class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ('gender', 'age', 'picture', 'bio', 'picture')
+        fields = ('gender', 'age', 'picture', 'bio')
 
 
 class CommentForm(forms.ModelForm):
@@ -45,3 +45,7 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('comment_content',)
+
+
+class TripPlanSearchForm(forms.Form):
+    query = forms.CharField(label='Search', max_length=100)

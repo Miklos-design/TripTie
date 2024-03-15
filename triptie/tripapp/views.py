@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.utils.decorators import method_decorator
@@ -8,28 +9,35 @@ from django.http import JsonResponse
 from .explorePage import search_youtube_for_city
 from django.shortcuts import render
 import requests
-from tripapp.form import UserProfileForm, TripPlanForm
+from tripapp.form import UserProfileForm, TripPlanForm, TripPlanSearchForm
 from tripapp.models import UserProfile, TripPlan, LikePost
+
 
 class IndexView(View):
     def get(self, request):
         return render(request, 'tripapp/index.html')
 
+
 # API key
 YOUTUBE_API_KEY = 'AIzaSyDbSCu3VjTPVTS89Nz0K-fK7Jn4SLcUc1o'
+
 
 def explore(request):
     return render(request, 'tripapp/explore.html')
 
+
 def home(request):
     return render(request, 'tripapp/home.html')
+
 
 class AboutView(View):
     def get(self, request):
         return render(request, 'tripapp/about.html')
 
+
 def index(request):
     return render(request, 'tripapp/index.html')
+
 
 class ProfileView(View):
     def get_user_details(self, username):
@@ -145,7 +153,9 @@ class AddPlan(View):
             trip_plan = form.save(commit=False)
             trip_plan.user = request.user
             trip_plan.save()
-            return render(request,'tripapp/success.html')
+            return render(request, 'tripapp/success.html', context)
+        else:
+            print(form.errors)
 
         context = {
             'form': form,
@@ -167,6 +177,29 @@ class SuccessView(View):
         return render(request, 'tripapp/success.html')
 
 
+class TripPlanSearch(View):
+    @method_decorator(login_required)
+    def get(self, request):
+        form = TripPlanSearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            # Exclude private trip plans
+            trip_plans = TripPlan.objects.filter(
+                Q(title__icontains=query) |  # 使用 Q 对象实现 OR 查询
+                Q(description__icontains=query) |  # 在描述字段中进行模糊查询
+                Q(destination_city__icontains=query),  # 在目的地城市字段中进行模糊查询
+                is_private=False
+            ).distinct().order_by('start_date')
+            # liked_trip_plans = []
+            # user = request.user
+            # for trip_plan in trip_plans:
+            #     liked = LikePost.objects.filter(user=user, trip_plan=trip_plan).exists()
+            #     liked_trip_plans.append({'trip_plan': trip_plan, 'liked': liked})
+            return render(request, 'tripapp/trip_plan_search.html', {'trip_plans': trip_plans, 'query': query})
+
+        return render(request, 'tripapp/trip_plan_search.html', {'form': form})
+
+
 def weather(request):
     return render(request, 'tripapp/weather.html')
 
@@ -178,13 +211,17 @@ def myposts(request):
 def messages(request):
     return render(request, 'tripapp/messages.html')
 
+
 def explore_view(request):
     return render(request, 'tripapp/explore.html')
 
+
 def explore(request):
     return render(request, 'tripapp/explore.html')
+
+
 # def search_youtube(request):
-    # city_name = 'New York'
+# city_name = 'New York'
 def search_youtube_for_city(request):
     city_name = request.GET.get('city', 'New York')
 
