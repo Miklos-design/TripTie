@@ -1,162 +1,58 @@
-/* index.css */
 @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
-* {
-  margin: 10;
-  padding: 10;
+*
+{
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-
-#youtube-videos {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start; /* align-items changed to flex-start */
-  flex-wrap: wrap; /* allows items to wrap to the next line */
+html, body {
+  margin: 0;
+  padding: 0;
 }
-
-.video-container {
-  flex-basis: 30%;
-  margin: 10px;
-  display: flex;
-  flex-direction: column; /* stacks children (iframe and info div) vertically */
-  align-items: center; /* centers the children horizontally */
-}
-
-.video-iframe {
-  margin-bottom: 5px; /* adds a little space below the video */
-}
-
-.video-info {
-  text-align: center; /* centers the text of title and description */
-}
-
-.video-title {
-  margin: 5px 0; /* adds some space above and below the title */
-}
-
-.video-description {
-  font-size: 0.9em; /* optionally reduce the font size of the description */
-}
-
-/* This styles each individual video container */
-.city-video {
-  flex-basis: 30%; /* This gives each video container a base width */
-  margin: 10px; /* This adds some space around each video container */
-}
-
-
-.video-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center-align the child elements */
-  width: calc(33.333% - 40px); /* Subtract the gap from the width */
-  box-sizing: border-box; /* Include padding and border in the element's width */
-}
-
-iframe {
-  width: 100%; /* Take the full width of the parent */
-  height: auto; /* Maintain the aspect ratio */
-}
-
-#city-name {
-  color: black;
-  width: 57%;
-  height: 40px;
-  line-height: normal;
-  padding: 5px 10px;
-  margin: 0 auto;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-#search-form button {
-  height: 40px;
-  padding: 5px 20px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer; /* Show pointer on mouseover */
-}
-
-
-/*Center the search box*/
-#search-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100px;
-}
-/* Center the main */
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 75vh;
-}
-
-
-/*Set the text color of the link to white*/
-header a {
-  color: #ffffff; /* color: white; */
-  text-decoration: none; /* no underline */
-}
-
-/*Make the navigation menu horizontal instead of vertical*/
-header ul {
-  list-style: none;
-  display: flex;
-}
-
-header ul li {
-  margin-right: 20px;
-}
-
 header
 {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 40px 100px;
+  padding: 40px 60px;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 header .logo
 {
   color: #fff;
   text-transform: uppercase;
   cursor: pointer;
 }
-.toggle {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 20px; /* Adjust this value as needed */
+.toggle
+{
+  position: relative;
+  left:10px;
+  right: 10px;
   width: 60px;
   height: 60px;
   background: url(https://i.ibb.co/HrfVRcx/menu.png);
   background-repeat: no-repeat;
-  background-size: 40px;
+  background-size: 30px;
   background-position: center;
   cursor: pointer;
 }
-
 .toggle.active
 {
   background: url(https://i.ibb.co/rt3HybH/close.png);
   background-repeat: no-repeat;
-  background-size: 35px;
-  background-position: right;
+  background-size: 30px;
+  background-position: center;
   cursor: pointer;
-  right: 20px;
 }
 .showcase
 {
-  position: relative;
+  position: absolute;
   right: 0;
   width: 100%;
   min-height: 100vh;
@@ -164,7 +60,7 @@ header .logo
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #111;
+  background: rgb(0, 0, 0); 
   transition: 0.5s;
   z-index: 2;
 }
@@ -175,7 +71,7 @@ header .logo
 
 .showcase video
 {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -185,12 +81,12 @@ header .logo
 }
 .overlay
 {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #f49003;
+  background: #ff80198f;
   mix-blend-mode: overlay;
 }
 .text
@@ -232,8 +128,8 @@ header .logo
   text-transform: uppercase;
   text-decoration: none;
   font-weight: 500;
-  margin-top: 140px;
-  color: #111;
+  margin-top: 10px;
+  color: #000000;
   letter-spacing: 2px;
   transition: 0.2s;
 }
@@ -245,7 +141,8 @@ header .logo
 {
   position: absolute;
   z-index: 10;
-  bottom: 20px;
+  right: auto;
+  bottom: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -270,7 +167,7 @@ header .logo
 {
   position: absolute;
   top: 0;
-  right: 50px;
+  right: 0;
   width: 300px;
   height: 100%;
   display: flex;
@@ -293,33 +190,54 @@ header .logo
 }
 .menu ul li a:hover
 {
-  color: #f46703;
-}
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-    .video-wrapper {
-        max-width: calc(50% - 40px); /* Adjust max width for smaller screens */
-    }
+  color: #f48803;
 }
 
-@media (max-width: 768px) {
-    .video-wrapper {
-        max-width: 100%; /* Each video takes full width on small screens */
-    }
-
-@media (max-width: 800px)
-{
-  .showcase,
-  .showcase header
-  {
-    padding: 20px;
-  }
-  .text h2
-  {
-    font-size: 2em;
-  }
-  .text h3
-  {
-    font-size: 1.5em;
-  }
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%; /* Adjust the width as needed */
+  max-width: 600px; /* Set a maximum width if necessary */
+  height: 40%; /* Adjust the height as needed */
+  margin: 0 auto; /* Center horizontally */
 }
+
+
+
+.form-signin {
+  background-color: #f7f7f7; /* Light gray background */
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 20px; /* Add padding */
+}
+
+.form-signin label {
+  font-weight: bold; /* Bold labels */
+}
+
+.form-signin input[type="text"],
+.form-signin input[type="password"] {
+  width: 100%; /* Full width input fields */
+  padding: 10px; /* Add padding */
+  margin-bottom: 15px; /* Add space between input fields */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 3px; /* Slightly rounded corners */
+}
+
+.form-signin button {
+  width: 100%; /* Full width button */
+  padding: 10px; /* Add padding */
+  border: none; /* Remove default button border */
+  border-radius: 3px; /* Rounded corners */
+  background-color: #ff8800; /* Orange button background */
+  color: #fff; /* White text color */
+  font-size: 1.2em; /* Larger font size */
+  cursor: pointer; /* Add pointer cursor */
+}
+
+.form-signin button:hover {
+  background-color: #cc6e00; /* Darker orange on hover */
+}
+
