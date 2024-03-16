@@ -15,7 +15,7 @@
     {% if trip_plans %}
         <h2>Search Results for "{{ query }}"</h2>
         <hr>
-        {% if liked_trip_plans %}
+        {% if trip_plans %}
             <div class="d-flex flex-column align-items-center">
                 {% for trip_plan in trip_plans %}
                     <div class="card mb-4" style="width: 100%; max-width: 600px;">
@@ -57,3 +57,4 @@
         {% endif %}
     {% endif %}
 {% endblock %}
+</div>

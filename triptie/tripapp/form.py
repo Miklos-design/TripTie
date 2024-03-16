@@ -12,20 +12,23 @@ class TripPlanForm(forms.ModelForm):
                                        help_text="Please enter the city of the destination.")
     description = forms.CharField(widget=forms.Textarea, max_length=TripPlan.DESCRIPTION_MAX_VALUE,
                                   help_text="Please enter the description")
-    is_private = forms.BooleanField(initial=False,required=False)
+    is_private = forms.BooleanField(initial=False, required=False)
     image = forms.ImageField(required=True)
 
     class Meta:
         model = TripPlan
-        fields = ['title', 'start_date', 'end_date', 'destination_city', 'description', 'is_private']
+        fields = ['title', 'start_date', 'end_date', 'destination_city', 'description', 'is_private', 'image']
 
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
 
+    def __str__(self):
+        return self.username
+
     class Meta:
         model = User
-        fields = ('username', 'email', 'password',)
+        fields = ('username', 'email', 'password')
 
 
 class UserProfileForm(forms.ModelForm):
@@ -36,7 +39,7 @@ class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ('gender', 'age', 'picture', 'bio', 'picture')
+        fields = ('gender', 'age', 'picture', 'bio')
 
 
 class CommentForm(forms.ModelForm):

@@ -1,0 +1,19 @@
+<!-- tripapp/includes/comment.html -->
+{% load static %}
+
+<div class="comment">
+    <div class="card mb-2">
+        <div class="card-body">
+            <img src=" 
+             
+                    {% if comment.user.userprofile.picture %}{{ comment.user.userprofile.picture.url }}{% else %}{% static 'images/default_avatar.jpg' %}{% endif %}""
+            alt="{{ comment.user.username }}" class="rounded-circle" width="50"
+            height="50">
+
+            <p class="card-text">{{ comment.comment_content }}</p>
+            <small class="text-muted">Comment by: {{ comment.user.username }}</small>
+            <small class="text-muted">Posted
+                on: {{ comment.created_at|date:"F j, Y, g:i a" }}</small>
+        </div>
+    </div>
+</div>
