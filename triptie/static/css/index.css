@@ -201,17 +201,21 @@ header .logo
   width: 25%; /* Adjust the width as needed */
   max-width: 600px; /* Set a maximum width if necessary */
   height: 40%; /* Adjust the height as needed */
-  margin: 0 auto; /* Center horizontally */
+  display: flex; /* Enables Flexbox */
+  justify-content: center; /* Center horizontally in the flex container */
+  align-items: center; /* Center vertically in the flex container */
+  flex-direction: column; /* Stack children vertically */
 }
-
-
 
 .form-signin {
   background-color: #f7f7f7; /* Light gray background */
   border: 1px solid #ddd; /* Gray border */
   border-radius: 5px; /* Rounded corners */
+  width: 30%; /* Make form-signin fill the container width */
   padding: 20px; /* Add padding */
+  box-sizing: border-box; /* Ensure padding is included in the width */
 }
+
 .weather-box {
     background-color: #e0f7fa; /* A lighter background for better readability */
     /* Inherits styles from .form-signin and overrides background-color */
