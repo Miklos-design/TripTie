@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q, Prefetch
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.decorators import method_decorator
@@ -11,7 +11,6 @@ from django.shortcuts import render
 import requests
 from tripapp.form import UserProfileForm, TripPlanForm, TripPlanSearchForm, CommentForm
 from tripapp.models import UserProfile, TripPlan, LikePost, Comment
-
 
 
 class IndexView(View):
@@ -277,8 +276,29 @@ class LikeTripPlan(View):
         return redirect(request.META.get('HTTP_REFERER', 'tripapp:index'))
 
 
+class DeleteTripPlan(View):
+    @method_decorator(login_required)
+    def post(self, request, trip_plan_id):
+        trip_plan = get_object_or_404(TripPlan, id=trip_plan_id)
+
+        # Check if the user is the owner of the trip plan
+        if request.user == trip_plan.user:
+            # Delete the trip plan
+            trip_plan.delete()
+            # Redirect to a success page or any other appropriate URL
+            return redirect(request.META.get('HTTP_REFERER', 'tripapp:index'))
+
+            # return redirect('tripapp:index')  # Replace 'index' with the URL name of the page you want to redirect to
+        else:
+            # If the user is not the owner, you may want to handle this case differently
+            # For example, display an error message or redirect to another page
+            return redirect('tripapp:index')  # Redirect to index page for now
+
+
 def weather(request):
     return render(request, 'tripapp/weather.html')
+
+
 class WeatherView(View):
     def get(self, request):
         return render(request, 'tripapp/weather.html')

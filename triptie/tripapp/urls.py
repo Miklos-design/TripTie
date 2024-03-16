@@ -15,6 +15,7 @@ urlpatterns = [
     path('trip_plan_search/', views.TripPlanSearch.as_view(), name='trip_plan_search'),
     path('add_comment/<int:trip_plan_id>', views.AddCommentView.as_view(), name='add_comment'),
     path('like_trip_plan/<int:trip_plan_id>', views.LikeTripPlan.as_view(), name='like_trip_plan'),
+    path('delete_trip_plan/<int:trip_plan_id>', views.DeleteTripPlan.as_view(), name='delete_trip_plan'),
     path('explore/', views.explore, name='explore'),
     path('search_youtube/', views.search_youtube_for_city, name='search_youtube'),
     path('weather/', views.weather, name='weather'),
