@@ -2,11 +2,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q, Prefetch
 from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.http import JsonResponse
-from .explorePage import search_youtube_for_city
 from django.shortcuts import render
 import requests
 from tripapp.form import UserProfileForm, TripPlanForm, TripPlanSearchForm, CommentForm
@@ -220,10 +220,14 @@ class AddCommentView(View):
             comment.user = request.user
             print(comment.comment_content)
             comment.save()
-            return redirect(request.META.get('HTTP_REFERER', 'tripapp:index'))
+
+            comment_html = render_to_string('tripapp/includes/comment.html', {'comment': comment}, request=request)
+
+            return JsonResponse({'success': True, 'comment_html': comment_html})
         else:
             print(form.errors)
-            return redirect(request.META.get('HTTP_REFERER', 'tripapp:index'))
+            # return redirect(request.META.get('HTTP_REFERER', 'tripapp:index'))
+            return JsonResponse({'success': False, 'errors': form.errors})
 
     def get(self, request, trip_plan_id):
         form = CommentForm()
@@ -243,7 +247,7 @@ class LikeTripPlan(View):
             # User hasn't liked this trip plan yet, like it
             LikePost.objects.create(user=user, trip_plan=trip_plan)
 
-        return redirect(request.META.get('HTTP_REFERER', 'tripapp:index'))
+        return JsonResponse({'success': True})
 
     def get(self, request, trip_plan_id):
         form = CommentForm()
@@ -254,19 +258,7 @@ def weather(request):
     return render(request, 'tripapp/weather.html')
 
 
-def myposts(request):
-    return render(request, 'tripapp/myposts.html')
-
-
-def messages(request):
-    return render(request, 'tripapp/messages.html')
-
-
 def explore_view(request):
-    return render(request, 'tripapp/explore.html')
-
-
-def explore(request):
     return render(request, 'tripapp/explore.html')
 
 
@@ -290,7 +282,7 @@ def search_youtube_for_city(request):
 
 def get_trip_plan_details(trip_plan_id, user):
     trip_plan = TripPlan.objects.get(id=trip_plan_id)
-    comments = Comment.objects.filter(trip_plan=trip_plan)
+    comments = Comment.objects.filter(trip_plan=trip_plan).order_by('-created_at')
     liked = LikePost.objects.filter(user=user, trip_plan=trip_plan).exists()
     return {
         'trip_plan': trip_plan,
