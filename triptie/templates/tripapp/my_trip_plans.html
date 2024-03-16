@@ -7,87 +7,14 @@
 
 
 {% block body_block %}
-    <div class="container mt-4">
+<div class="container mt-4">
     <h1>My Trip Plans</h1>
-    <hr>
-    {% if detailed_trip_plans %}
-        <div class="d-flex flex-column align-items-center">
-        {% for detailed_trip_plan in detailed_trip_plans %}
-            <div class="card mb-4" style="width: 100%; max-width: 600px;">
-            {% if detailed_trip_plan.trip_plan.image %}
-                <img src="{{ MEDIA_URL }}{{ detailed_trip_plan.trip_plan.image.url }}" class="card-img-top"
-                     alt="{{ detailed_trip_plan.trip_plan.title }}">
-            {% else %}
-                <img src="https://i.ibb.co/FKrsX1r/hot-air-balloon-4095513-1280.jpg" class="card-img-top"
-                     alt="Default Image">
-            {% endif %}
-            <div class="card-body">
-                <h5 class="card-title">{{ detailed_trip_plan.trip_plan.title }}</h5>
-                <p class="card-text">{{ detailed_trip_plan.trip_plan.description }}</p>
-            </div>
-            <div class="card-footer">
-            <div class="d-flex justify-content-between align-items-center">
-                <small class="text-muted">Trip
-                    to {{ detailed_trip_plan.trip_plan.destination_city }}</small>
-                <small class="text-muted">{{ detailed_trip_plan.trip_plan.start_date }}
-                    - {{ detailed_trip_plan.trip_plan.end_date }}</small>
-            </div>
-            <div class="d-flex justify-content-between align-items-center mt-2">
-                <form id="likeForm" action="{% url 'tripapp:like_trip_plan' detailed_trip_plan.trip_plan.id %}"
-                      method="post">
-                    <button type="submit"
-                            class="btn {% if detailed_trip_plan.liked %}btn-primary{% else %}btn-secondary{% endif %}">
-                        Like
-                    </button>
-                </form>
-                <form id="commentForm" action="{% url 'tripapp:add_comment' detailed_trip_plan.trip_plan.id %}"
-                      method="post">
-                    <div class="input-group">
-                                        <textarea class="form-control" name="comment_content" rows="2"
-                                                  placeholder="Add a comment..." required></textarea>
-                        <button type="submit" class="btn btn-outline-secondary">Post</button>
-                    </div>
-                </form>
-            </div>
-            <hr>
-            <h6>Comments:</h6>
-            <div class="comments-section">
-                {% for comment in detailed_trip_plan.comments %}
-                    <div class="card mb-2">
-                        <div class="card-body">
-                            <img src="
-                                   
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    {% if comment.user.userprofile.picture %}{{ comment.user.userprofile.picture.url }}{% else %}{% static 'images/default_avatar.jpg' %}{% endif %}"
-                                 alt="{{ comment.user.username }}" class="rounded-circle" width="50"
-                                 height="50">
+    {% include 'tripapp/includes/common_trip_plan_display.html' %}
 
-                            <p class="card-text">{{ comment.comment_content }}</p>
-                            <small class="text-muted">Comment by: {{ comment.user.username }}</small>
-                            <small class="text-muted">Posted
-                                on: {{ comment.created_at|date:"F j, Y, g:i a" }}</small>
-                        </div>
-                    </div>
-                {% empty %}
-                    <p>No comments yet.</p>
-                {% endfor %}
-            </div>
-            <div>
-            </div>
-        {% endfor %}
-    </div>
-    {% else %}
-        <p>You don't have any trip plans yet.</p>
-    {% endif %}
+
 </div>
+
+
 {% endblock %}
 
 

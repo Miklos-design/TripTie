@@ -123,9 +123,7 @@ class MyTripPlansView(View):
     @method_decorator(login_required)
     def get(self, request, username):
         trip_plans = TripPlan.objects.filter(user=request.user).order_by('-start_date')
-        trip_plans = trip_plans.prefetch_related(
-            Prefetch('comment_set', queryset=Comment.objects.all(), to_attr='comments')
-        )
+
         user = request.user
         detailed_trip_plans = []
         for plan in trip_plans:
@@ -142,12 +140,12 @@ class MyLikesView(View):
         # Extract the trip plans from the likes
         trip_plans = [like.trip_plan for like in liked_trip_plans]
 
-        context = {
-            'trip_plans': trip_plans,
-            'user': request.user,
-        }
+        user = request.user
+        detailed_trip_plans = []
+        for plan in trip_plans:
+            detailed_trip_plans.append(get_trip_plan_details(plan.id, user))
 
-        return render(request, 'tripapp/my_likes.html', context)
+        return render(request, 'tripapp/my_likes.html', {'detailed_trip_plans': detailed_trip_plans})
 
 
 class AddPlan(View):
@@ -207,6 +205,8 @@ class TripPlanSearch(View):
     @method_decorator(login_required)
     def get(self, request):
         form = TripPlanSearchForm(request.GET)
+        user = request.user
+
         if form.is_valid():
             query = form.cleaned_data['query']
             # Exclude private trip plans
@@ -216,15 +216,19 @@ class TripPlanSearch(View):
                 Q(destination_city__icontains=query),
                 is_private=False
             ).distinct().order_by('start_date')
+            detailed_trip_plans = []
+            for plan in trip_plans:
+                detailed_trip_plans.append(get_trip_plan_details(plan.id, user))
 
-            # liked_trip_plans = []
-            # user = request.user
-            # for trip_plan in trip_plans:
-            #     liked = LikePost.objects.filter(user=user, trip_plan=trip_plan).exists()
-            #     liked_trip_plans.append({'trip_plan': trip_plan, 'liked': liked})
-            return render(request, 'tripapp/trip_plan_search.html', {'trip_plans': trip_plans, 'query': query})
+            return render(request, 'tripapp/trip_plan_search.html',
+                          {'detailed_trip_plans': detailed_trip_plans, 'query': query})
 
-        return render(request, 'tripapp/trip_plan_search.html', {'form': form})
+        trip_plans = TripPlan.objects.filter(is_private=False).order_by('start_date')
+        detailed_trip_plans = []
+        for plan in trip_plans:
+            detailed_trip_plans.append(get_trip_plan_details(plan.id, user))
+
+        return render(request, 'tripapp/trip_plan_search.html', {'detailed_trip_plans': detailed_trip_plans})
 
 
 class AddCommentView(View):

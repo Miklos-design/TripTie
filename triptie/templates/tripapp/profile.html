@@ -7,27 +7,49 @@
 
 {% block body_block %}
     <div class="container">
-        <div class="row">
-            {% if user_profile.picture %}
-                <img src="{{ MEDIA_URL }}{{ user_profile.picture.url }}" width="300" height="300"
-                     alt="{{ selected_user.username }}'s profile image"/>
-            {% else %}
-                <img src="https://ibb.co/xm1C47n" width="300" height="300" alt="Placeholder image"/>
-            {% endif %}
-            <br/>
-            <div>
-                <p>
-                    <strong>Username:</strong> {{ user_profile.user.username }}<br>
-                    <strong>Gender:</strong> {{ user_profile.gender }}<br>
-                    <strong>Age:</strong> {{ user_profile.age }}<br>
-                    <strong>Bio:</strong> {{ user_profile.bio }}<br>
-                </p>
-                {% if selected_user == user %}
-                    <a href="{% url 'tripapp:edit_profile' username=user.username %}" class="btn btn-primary">Edit Profile</a>
-                    <a href="{% url 'tripapp:my_trip_plans' username=user.username %}" class="btn btn-secondary">My Trip Plan</a>
-                    <a href="{% url 'tripapp:my_likes' username=user.username %}" class="btn btn-info">My Likes</a>
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                {% if user_profile.picture %}
+                    <div class="profile-picture">
+                        <img src="{{ MEDIA_URL }}{{ user_profile.picture.url }}" class="img-fluid rounded-circle"
+                             alt="{{ selected_user.username }}'s profile image"/>
+                    </div>
+                {% else %}
+                    <div class="profile-picture">
+                        <img src="{% static 'images/default_profile.jpg' %}" class="img-fluid rounded-circle"
+                             alt="Placeholder image"/>
+                    </div>
                 {% endif %}
+                <br/>
+                <div>
+                    <p>
+                        <strong>Username:</strong> {{ user_profile.user.username }}<br>
+                        <strong>Gender:</strong> {{ user_profile.gender }}<br>
+                        <strong>Age:</strong> {{ user_profile.age }}<br>
+                        <strong>Bio:</strong> {{ user_profile.bio }}<br>
+                    </p>
+                <br>
+                <br>
+                    {% if selected_user == user %}
+                        <a href="{% url 'tripapp:edit_profile' username=user.username %}" class="btn btn-primary">Edit
+                            Profile</a>
+                        <a href="{% url 'tripapp:my_trip_plans' username=user.username %}" class="btn btn-secondary">My
+                            Trip Plan</a>
+                        <a href="{% url 'tripapp:my_likes' username=user.username %}" class="btn btn-info">My Likes</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
 {% endblock %}
+
+<style>
+    .profile-picture {
+        width: 150px; /* Adjust the width to your preference */
+        height: 150px; /* Adjust the height to your preference */
+        overflow: hidden;
+        border-radius: 50%;
+    }
+</style>
+
+
