@@ -4,31 +4,61 @@
     Login
 {% endblock %}
 
-{% block head_block %}
-
-{% endblock %}
-
 {% block body_block %}
-<div class="header">
-        <h1 style="color: rgb(236, 138, 25);">Wellcome</h1>
-    
+<div class="jumbotron p-4">
+    <div class="container">
+        <h1 class="jumbotron-heading">Login</h1>
+    </div>
 </div>
-<div class="container"   style="text-align: center;">
-    <form class="form-signin" role="form" method="post" action=".">
-{#<!--        {% csrf_token %}-->#}
-    <h4 style="margin-bottom: 20px;">Login into account</h4>
 
+<div class="container">
+    <form class="form-signin" role="form" method="post" action=".">
+        {% csrf_token %}
         <label for="inputUsername" class="sr-only">Username</label>
         <input type="text" name="username" id="id_username" class="form-control" placeholder="Username" required autofocus>
 
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="password" id="id_password" class="form-control" placeholder="Password" required>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">Login</button>
-
-        <div style="text-align: center;">
-            <a href="{% url 'registration_register' %}" style="color: rgb(120, 113, 113);">Register</a>
-        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">Sign in</button>
     </form>
 </div>
 {% endblock %}
+
+
+
+{#Miki Version#}
+{#{% extends 'tripapp/base.html' %}#}
+{##}
+{#{% block title_block %}#}
+{#    Login#}
+{#{% endblock %}#}
+{##}
+{#{% block head_block %}#}
+{##}
+{#{% endblock %}#}
+{##}
+{#{% block body_block %}#}
+{#<div class="header">#}
+{#        <h1 style="color: rgb(236, 138, 25);">Wellcome</h1>#}
+{##}
+{#</div>#}
+{#<div class="container"   style="text-align: center;">#}
+{#    <form class="form-signin" role="form" method="post" action=".">#}
+{#<!--        {% csrf_token %}-->#}
+{#    <h4 style="margin-bottom: 20px;">Login into account</h4>#}
+{##}
+{#        <label for="inputUsername" class="sr-only">Username</label>#}
+{#        <input type="text" name="username" id="id_username" class="form-control" placeholder="Username" required autofocus>#}
+{##}
+{#        <label for="inputPassword" class="sr-only">Password</label>#}
+{#        <input type="password" name="password" id="id_password" class="form-control" placeholder="Password" required>#}
+{##}
+{#        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">Login</button>#}
+{##}
+{#        <div style="text-align: center;">#}
+{#            <a href="{% url 'registration_register' %}" style="color: rgb(120, 113, 113);">Register</a>#}
+{#        </div>#}
+{#    </form>#}
+{#</div>#}
+{#{% endblock %}#}
