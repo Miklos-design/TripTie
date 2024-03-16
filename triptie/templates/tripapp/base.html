@@ -6,13 +6,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <title>{% block title_block %}Document{% endblock %}</title>
 </head>
 
 <body>
+    {% block showcase_block %}
     <section class="showcase">
         <header style="display: flex; justify-content: space-between; align-items: center;">
             <h2 class="logo">TripTie</h2>
@@ -24,6 +25,8 @@
             {% endblock %}
         </div>
     </section>
+    {% endblock showcase_block %}
+
 
     <div class="menu">
         <ul>

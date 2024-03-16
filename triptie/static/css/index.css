@@ -212,6 +212,20 @@ header .logo
   border-radius: 5px; /* Rounded corners */
   padding: 20px; /* Add padding */
 }
+.weather-box {
+    background-color: #e0f7fa; /* A lighter background for better readability */
+    /* Inherits styles from .form-signin and overrides background-color */
+}
+.weather-container{
+  background-color: #f1eded; /* White background */
+  border: 1px solid #130303; /* Gray border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 20px; /* Inner spacing */
+  max-width: 600px; /* Or your preferred width */
+  margin: 20px auto; /* Center the box */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds shadow for depth */
+}
+
 
 .form-signin label {
   font-weight: bold; /* Bold labels */

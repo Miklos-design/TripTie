@@ -6,30 +6,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Info Display</title>
-
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
 </head>
 <body>
-    <header>
-        <h1>Location Display</h1>
-        <button onclick="window.location.href='{% url 'tripapp:index' %}'">Home</button>
-    </header>
-    <video id="backgroundVideo" autoplay loop muted style="position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%; z-index: -1;"></video>
+    <div class="showcase">
+        <video id="backgroundVideo" autoplay loop muted style="position: absolute; right: 0; bottom: 0; min-width: 100%; min-height: 100%; z-index: -1;"></video>
+        <div class="overlay"></div>
 
-    <div id="city-search">
-        <input type="text" id="cityName" placeholder="Enter city name" />
-        <button id="searchButton">Search</button>
-    </div>
-    <div id="weather-container">
-        <div class="weather-box">
-            <h2>Current Weather:</h2>
-            <p>Weather Status:</p>
-            <p>Temperature:</p>
-            <p>Time:</p>
+        <header>
+            <h1 class="logo">Location Display</h1>
+            <button onclick="window.location.href='{% url 'tripapp:index' %}'" class="text a">Home</button>
+        </header>
+
+        <div class="container weather-container" id="weather-container">
+            <div class="form-signin">
+                <h2>Current Weather:</h2>
+                <p>Weather Status:</p>
+                <p>Temperature:</p>
+                <p>Time:</p>
+            </div>
+            <div class="form-signin weather-box">
+                <h2>Recent day temperature</h2>
+            </div>
+            <div class="city-search">
+                <input type="text" id="cityName" placeholder="Enter city name" class="form-signin input[type='text']" />
+                <button id="searchButton" class="form-signin button">Search</button>
+            </div>
         </div>
-        <div class="weather-box">
-            <h2>Recent day temperature</h2>
-        </div>
     </div>
+
+
     <script>
         // initiating the process of fetching and displaying weather data on page load
         fetchWeatherInfo();
@@ -134,22 +140,24 @@
             // Update current weather
             // Convert weather code to description
             const weatherDescriptions = {
-                0: 'Clear sky',
-                1: 'Mainly clear',
-                2: 'Partly cloudy',
-                3: 'Overcast',
+                0: 'Clear sky, a good time for a walk',
+                1: 'Mainly clear, so enjoy',
+                2: 'Partly cloudy, you know what to do',
+                3: 'Overcasted but still good to leave the house',
             };
             const weatherDescription = weatherDescriptions[data.current_weather.weathercode] || 'Not available';
 
             // Format the time to a more readable format
             const weatherTime = new Date(data.current_weather.time);
             const timeString = weatherTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-
+            
             currentWeatherBox.innerHTML = `
-                <h2>Current Weather:</h2>
-                <p>Weather: ${weatherDescription}</p>
-                <p>Temperature: ${data.current_weather.temperature}°C</p>
-                <p>Time: ${timeString}</p>
+            <div class="form-signin">
+        <h2>Current Weather:</h2>
+        <p>Weather: ${weatherDescription}</p>
+        <p>Temperature: ${data.current_weather.temperature}°C</p>
+        <p>Time: ${timeString}</p>
+    </div>
             `;
   
             

@@ -1,0 +1,132 @@
+/* General Resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* Background Video and Overlay */
+.showcase {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: rgb(0, 0, 0);
+    overflow: hidden;
+}
+
+#backgroundVideo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Header */
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 40px;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+header .logo {
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+header .text a {
+    color: #fff;
+    background-color: #ff8800;
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+header .text a:hover {
+    background-color: #cc6e00;
+}
+
+/* Weather Container */
+.container {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    width: 90%;
+    max-width: 800px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    padding: 20px;
+    margin: auto;
+    z-index: 2;
+}
+
+/* Form Signin and Weather Box */
+.form-signin, .weather-box {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.weather-box {
+    background-color: #e0f7fa;
+}
+
+/* City Search */
+.city-search {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.city-search input[type='text'] {
+    width: 70%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.city-search button {
+    width: 25%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ff8800;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.city-search button:hover {
+    background-color: #cc6e00;
+}
