@@ -233,7 +233,8 @@ header .logo
     /* Inherits styles from .form-signin and overrides background-color */
 }
 .weather-container{
-  background-color: #f1eded; /* White background */
+
+    background-color: rgba(255, 255, 255, 0.5); /* White background with 50% transparency */
   border: 1px solid #130303; /* Gray border */
   border-radius: 5px; /* Rounded corners */
   padding: 20px; /* Inner spacing */
@@ -256,18 +257,43 @@ header .logo
   border-radius: 3px; /* Slightly rounded corners */
 }
 
-.form-signin button {
-  width: 100%; /* Full width button */
-  padding: 10px; /* Add padding */
-  border: none; /* Remove default button border */
-  border-radius: 3px; /* Rounded corners */
-  background-color: #ff8800; /* Orange button background */
-  color: #fff; /* White text color */
-  font-size: 1.2em; /* Larger font size */
-  cursor: pointer; /* Add pointer cursor */
-}
 
 .form-signin button:hover {
   background-color: #cc6e00; /* Darker orange on hover */
 }
+header {
+    position: fixed; /* Change to fixed for sticking on top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 60px; /* Adjusted padding */
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+header .logo {
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.form-signin button{
+    width: 100%; /* Full width button */
+    padding: 10px; /* Add padding */
+    border: none; /* Remove default button border */
+    border-radius: 3px; /* Rounded corners */
+    background-color: rgba(255, 136, 0, 0.5); /* Orange button background with 50% transparency */
+    color: rgba(255, 255, 255, 0.8); /* White text color with 80% transparency */
+    font-size: 1.2em; /* Larger font size */
+    cursor: pointer; /* Add pointer cursor */
+}
+a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit font color */
+    font-family: 'Poppins', sans-serif; /* Keep font family */
+}
+
 

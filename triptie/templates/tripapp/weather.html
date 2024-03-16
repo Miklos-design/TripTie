@@ -15,8 +15,10 @@
 
         <header>
             <h1 class="logo">Location Display</h1>
-            <button onclick="window.location.href='{% url 'tripapp:index' %}'" class="button">Home</button>
-        </header>
+            <a href="{% url 'tripapp:index' %}">
+                <h1>Home</h1>
+            </a>
+       </header>
 
         <div class="container weather-container" id="weather-container">
             <div class="form-signin">
