@@ -193,19 +193,7 @@ header .logo
   color: #f48803;
 }
 
-.container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 25%; /* Adjust the width as needed */
-  max-width: 600px; /* Set a maximum width if necessary */
-  height: 40%; /* Adjust the height as needed */
-  display: flex; /* Enables Flexbox */
-  justify-content: center; /* Center horizontally in the flex container */
-  align-items: center; /* Center vertically in the flex container */
-  flex-direction: column; /* Stack children vertically */
-}
+
 
 .form-signin {
   background-color: #f7f7f7; /* Light gray background */
@@ -219,6 +207,22 @@ header .logo
 .weather-box {
     background-color: #e0f7fa; /* A lighter background for better readability */
     /* Inherits styles from .form-signin and overrides background-color */
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%; /* Adjust the width as needed */
+  max-width: 600px; /* Set a maximum width if necessary */
+  height: 40%; /* Adjust the height as needed */
+  display: flex; /* Enables Flexbox */
+  justify-content: center; /* Center horizontally in the flex container */
+  align-items: center; /* Center vertically in the flex container */
+  flex-direction: column; /* Stack children vertically */
+  margin: 0 auto; /* Center horizontally */
+
 }
 .weather-container{
   background-color: #f1eded; /* White background */
@@ -258,4 +262,6 @@ header .logo
 .form-signin button:hover {
   background-color: #cc6e00; /* Darker orange on hover */
 }
+
+
 
