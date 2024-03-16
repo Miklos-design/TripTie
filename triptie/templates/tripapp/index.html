@@ -29,7 +29,7 @@
     <ul class="social">
       <li style="list-style: none; margin: 0; padding: 0;"><a href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png" onclick="shareOnFacebook()" style="height: 31px;"></a></li>
       <li style="list-style: none; margin: 0; padding: 0;"><a href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png" onclick="tweetShare()" style="height: 31px;"></a></li>
-      <li style="list-style: none; margin: 0; padding: 0;"><a href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png" style="height: 31px;"></a></li>
+      <li style="list-style: none; margin: 0; padding: 0;"><a href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png" onclick="insta()" style="height: 31px;"></a></li>
     </ul>
   </section>
   <div class="menu">
@@ -41,18 +41,6 @@
     </ul>
   </div>
 <script src="{% static 'js/index.js' %}"></script>
-<script>
-  function tweetShare() {
-    window.open('https://twitter.com/intent/tweet?text=Check%20out%20this%20awesome%20website%21%20https%3A%2F%2Fexample.com%2F');
-  }
 
-  function shareOnFacebook() {
-      var url = encodeURIComponent(window.location.href);
-      window.open('https://www.facebook.com/sharer/sharer.php?u=' + url, '_blank');
-  }
-  function ins() {
-      window.open('https://www.instagram.com');
-  } 
-</script>
 </body>
 </html>

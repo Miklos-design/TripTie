@@ -1,4 +1,5 @@
 {% extends 'tripapp/base.html' %}
+{% include 'tripapp/index.html' %}
 {% load static %}
 
 {% block title_Block %}
@@ -31,9 +32,9 @@
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
                                 <a href="#" class="btn btn-outline-primary btn-sm">Like</a>
-                                <li><a href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png" onclick="shareOnFacebook()"></a></li>
-                                <li><a href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png" onclick="tweetShare()"></a></li>
-                                <li><a href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png" onclick="ins()"></a></li>
+                                <li style="list-style: none;"><a href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png" style="height: 31px;" onclick="shareOnFacebook()"></a></li>
+                                <li style="list-style: none;"><a href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png" style="height: 31px;" onclick="tweetShare()"></a></li>
+                                <li style="list-style: none;"><a href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png" style="height: 31px;" onclick="insta()"></a></li>
                                 
                                 <form action="{% url 'tripapp:add_comment' trip_plan.id %}" method="post">
                                     <div class="input-group">
