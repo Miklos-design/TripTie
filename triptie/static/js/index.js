@@ -6,17 +6,17 @@ menuToggle.addEventListener('click', () => {
   showcase.classList.toggle('active');
 });
 
-document.getElementById("loginRegisterButton").addEventListener("click", function(event) {
-  event.preventDefault(); // Prevent the default action of navigating away.
-  fetch('/accounts/login/')
-      .then(response => response.text())
-      .then(html => {
-          const popupWindow = window.open('', '_blank', 'width=600,height=400');
-          popupWindow.document.write(html);
-          popupWindow.document.close();
-      })
-      .catch(error => console.error('Error loading the popup content:', error));
-});
+// document.getElementById("loginRegisterButton").addEventListener("click", function(event) {
+//   event.preventDefault(); // Prevent the default action of navigating away.
+//   fetch('/accounts/login/')
+//       .then(response => response.text())
+//       .then(html => {
+//           const popupWindow = window.open('', '_login', 'width=600,height=400');
+//           popupWindow.document.write(html);
+//           popupWindow.document.close();
+//       })
+//       .catch(error => console.error('Error loading the popup content:', error));
+// });
 
 
 function tweetShare() {
