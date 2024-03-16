@@ -18,5 +18,5 @@ urlpatterns = [
     path('delete_trip_plan/<int:trip_plan_id>', views.DeleteTripPlan.as_view(), name='delete_trip_plan'),
     path('explore/', views.explore, name='explore'),
     path('search_youtube/', views.search_youtube_for_city, name='search_youtube'),
-    path('weather/', views.weather, name='weather'),
+    path('weather/', views.WeatherView.as_view(), name='weather'),
 ]

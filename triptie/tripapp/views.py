@@ -12,14 +12,13 @@ import requests
 from tripapp.form import UserProfileForm, TripPlanForm, TripPlanSearchForm, CommentForm
 from tripapp.models import UserProfile, TripPlan, LikePost, Comment
 
+# API key
+YOUTUBE_API_KEY = 'AIzaSyDbSCu3VjTPVTS89Nz0K-fK7Jn4SLcUc1o'
+
 
 class IndexView(View):
     def get(self, request):
         return render(request, 'tripapp/index.html')
-
-
-# API key
-YOUTUBE_API_KEY = 'AIzaSyDbSCu3VjTPVTS89Nz0K-fK7Jn4SLcUc1o'
 
 
 def explore(request):
@@ -293,10 +292,6 @@ class DeleteTripPlan(View):
             # If the user is not the owner, you may want to handle this case differently
             # For example, display an error message or redirect to another page
             return redirect('tripapp:index')  # Redirect to index page for now
-
-
-def weather(request):
-    return render(request, 'tripapp/weather.html')
 
 
 class WeatherView(View):
