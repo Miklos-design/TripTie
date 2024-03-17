@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'triptie.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'railway',
+        'USER': 'root',
+        'PASSWORD': 'PbCEvTBgQwfIAINeJawXpIajFbNztOEm',
+        'HOST': 'monorail.proxy.rlwy.net',  # The IP or hostname of your remote MySQL server
+        'PORT': '53083',  # The port MySQL is running on the remote server (default is 3306)
     }
 }
 
@@ -120,8 +124,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # This is where collectstatic will gather all static files
-#STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # This is where collectstatic will gather all static files
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Media files (User-uploaded files)
 # Static files (CSS, JavaScript, Images)
@@ -136,5 +140,3 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
