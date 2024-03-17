@@ -1,5 +1,13 @@
 {% load static %}
 <hr>
+
+<section class="showase">
+<link rel="stylesheet" href="{% static 'css/social.css' %}" type="text/css">
+
+    <video autoplay loop muted playsinline class="background-video">
+    <source src="{% static 'media/video.mp4' %}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
 {% if detailed_trip_plans %}
     <div class="d-flex flex-column align-items-center">
     {% for detailed_trip_plan in detailed_trip_plans %}
@@ -71,6 +79,7 @@
         </div>
     {% endfor %}
 </div>
+</section>
 {% else %}
     <p>No trip plan here.</p>
 {% endif %}

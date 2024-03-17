@@ -1,4 +1,6 @@
 {% extends 'tripapp/base.html' %}
+{% load static %}
+
 
 {% block title_block %}
     Register
@@ -10,6 +12,7 @@
             <h1 class="jumbotron-heading">Register Here</h1>
         </div>
     </div>
+    <link rel="stylesheet" href="{% static 'css/social.css' %}" type="text/css">
 
     <div class="container">
         <div class="row">
