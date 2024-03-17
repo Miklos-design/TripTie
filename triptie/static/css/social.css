@@ -1,0 +1,75 @@
+.social-icon {
+    font-size: 24px;
+    margin: 0 15px;
+    color: #ffffff;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.2);
+    color: #ff8019;
+  }
+  
+  .btn-like, .btn-post, .btn-delete {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 5px;
+  }
+  
+  .btn-like {
+    background-color: #4267B2;
+    color: #ffffff;
+  }
+  
+  .btn-like:hover {
+    background-color: #365899;
+  }
+  
+  .btn-post {
+    background-color: #ff8019;
+    color: #ffffff;
+  }
+  
+  .btn-post:hover {
+    background-color: #e06f00;
+  }
+  
+  .btn-delete {
+    background-color: #E53E3E;
+    color: #ffffff;
+  }
+  
+  .btn-delete:hover {
+    background-color: #C53030;
+  }
+  
+  .profile-picture img {
+    transition: transform 0.3s ease;
+    border-radius: 50%;
+  }
+  
+  .profile-picture img:hover {
+    transform: scale(1.1);
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+  }
+  
+  .card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .social-icon {
+      font-size: 20px;
+    }
+  }
+  
