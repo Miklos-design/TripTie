@@ -60,12 +60,13 @@
   position: absolute;
   right: 0;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   padding: 50px;
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   background: rgb(215, 222, 191);
+  background-attachment: scroll;
   transition: 0.5s;
   z-index: 2;
 }
@@ -109,5 +110,6 @@ label[for="id_gender"],label[for="id_age"], label[for="id_picture"],label[for="i
 .wide-flex-container {
   width: 700px;
 }
+
 
 

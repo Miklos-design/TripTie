@@ -20,6 +20,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']  # Allow any host for development purposes
 
+CSRF_TRUSTED_ORIGINS = [
+'https://triptie-production.up.railway.app']
+
 # Application definition
 
 INSTALLED_APPS = [
