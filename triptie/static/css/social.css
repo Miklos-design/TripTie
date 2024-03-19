@@ -98,3 +98,16 @@ label[for="id_gender"],label[for="id_age"], label[for="id_picture"],label[for="i
 .showcase .profile-picture {
   align-items: center; /* Center vertically if it's a flex container */
 }
+
+
+
+.profile-picture {
+  width: 300px; /* Adjust the width as needed */
+  height: 700px; /* Adjust the height as needed */
+}
+
+.wide-flex-container {
+  width: 700px;
+}
+
+

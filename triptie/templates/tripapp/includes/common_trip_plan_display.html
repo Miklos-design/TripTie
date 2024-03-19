@@ -1,17 +1,12 @@
 {% load static %}
 <hr>
 
-<section class="showase">
+<section class="showcase">
 <link rel="stylesheet" href="{% static 'css/social.css' %}" type="text/css">
-
-    <video autoplay loop muted playsinline class="background-video">
-    <source src="{% static 'media/video.mp4' %}" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
 {% if detailed_trip_plans %}
-    <div class="d-flex flex-column align-items-center">
+    <div class="d-flex flex-column align-items-center wide-flex-container" style="padding-top: 1200px;">
     {% for detailed_trip_plan in detailed_trip_plans %}
-        <div class="card mb-4" style="width: 100%; max-width: 600px;">
+        <div class="card mb" style="width: 90vw; max-width: 700px;">
         {% if detailed_trip_plan.trip_plan.image %}
             <img src="{{ MEDIA_URL }}{{ detailed_trip_plan.trip_plan.image.url }}" class="card-img-top"
                  alt="{{ detailed_trip_plan.trip_plan.title }}">
@@ -19,12 +14,12 @@
             <img src="https://i.ibb.co/FKrsX1r/hot-air-balloon-4095513-1280.jpg" class="card-img-top"
                  alt="Default Image">
         {% endif %}
-        <div class="card-body">
+        <div class="card-body" style="padding: 1rem;">
             <h5 class="card-title">{{ detailed_trip_plan.trip_plan.title }}</h5>
             <p class="card-text">{{ detailed_trip_plan.trip_plan.description }}</p>
         </div>
-        <div class="card-footer">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="card-footer" style="padding: 1rem;">
+            <div class="d-flex justify-content-between align-items-center">
             <small class="text-muted">Trip
                 to {{ detailed_trip_plan.trip_plan.destination_city }}</small>
             <small class="text-muted">{{ detailed_trip_plan.trip_plan.start_date }}
@@ -84,3 +79,16 @@
     <p>No trip plan here.</p>
 {% endif %}
 </div>
+<script/>
+<>
+    // $(document).ready(function() {
+    //   // Assuming '.wide-flex-container' is the direct parent of your posts/cards
+    //   $('.wide-flex-container').infiniteScroll({
+    //     // Adjust these options based on your actual implementation
+    //     path: 'path-to-next-page', // The server-side URL that returns the next set of items
+    //     append: '.card.mb', // The items to be appended
+    //     history: false,
+    //   });
+    // });
+    </script>
+    
