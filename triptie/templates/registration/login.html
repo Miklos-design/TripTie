@@ -2,68 +2,28 @@
 {% load static %}
 
 {% block title_block %}
-    Login
+Login
 {% endblock %}
 
 {% block body_block %}
-<div class="jumbotron p-4">
-    <div class="container">
-    </div>
-</div>
 <link rel="stylesheet" href="{% static 'css/social.css' %}" type="text/css">
+<div class="container mt-1"> 
+    <h1 class="text-left mb-4">Login</h1> 
 
-
-<div class="container" style="width: 50%;">
-    <h1 class="jumbotron-heading">Login</h1>
-
-    <form class="form-signin" role="form" method="post" action=".">
+    <form class="form-signin w-100" role="form" method="post" action="."> 
         {% csrf_token %}
 
-        <label for="inputUsername" class="sr-only">Username</label>
-        <input type="text" name="username" id="id_username" class="form-control" placeholder="Username" required autofocus>
+        <div class="form-group">
+            <label for="inputUsername" class="sr-only">Username</label>
+            <input type="text" name="username" id="id_username" class="form-control" placeholder="Username" required autofocus>
+        </div>
 
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" id="id_password" class="form-control" placeholder="Password" required>
+        <div class="form-group">
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" name="password" id="id_password" class="form-control" placeholder="Password" required>
+        </div>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">Sign in</button>
+        <button class="btn btn-lg btn-primary w-100" type="submit" value="Submit">Sign in</button> <!-- w-100 ensures the button takes the full width -->
     </form>
 </div>
 {% endblock %}
-
-
-
-{#Miki Version#}
-{#{% extends 'tripapp/base.html' %}#}
-{##}
-{#{% block title_block %}#}
-{#    Login#}
-{#{% endblock %}#}
-{##}
-{#{% block head_block %}#}
-{##}
-{#{% endblock %}#}
-{##}
-{#{% block body_block %}#}
-{#<div class="header">#}
-{#        <h1 style="color: rgb(236, 138, 25);">Wellcome</h1>#}
-{##}
-{#</div>#}
-{#<div class="container"   style="text-align: center;">#}
-    
-{#    <form class="form-signin" role="form" method="post" action=".">#}
-{#    <h4 style="margin-bottom: 20px;">Login into account</h4>#}
-{##}
-{#        <label for="inputUsername" class="sr-only">Username</label>#}
-{#        <input type="text" name="username" id="id_username" class="form-control" placeholder="Username" required autofocus>#}
-{##}
-{#        <label for="inputPassword" class="sr-only">Password</label>#}
-{#        <input type="password" name="password" id="id_password" class="form-control" placeholder="Password" required>#}
-{##}
-{#        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">Login</button>#}
-{##}
-{#        <div style="text-align: center;">#}
-{#            <a href="{% url 'registration_register' %}" style="color: rgb(120, 113, 113);">Register</a>#}
-{#        </div>#}
-{#    </form>#}
-{#</div>#}
-{#{% endblock %}#}

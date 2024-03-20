@@ -1,6 +1,6 @@
 /* General button styling */
 .btn, .btn-primary, .btn-secondary, .btn-info, input[type="submit"], input[type="button"], input[type="file"]::-webkit-file-upload-button {
-  background-color: #d77620;
+  background-color: #fa9a1c;
   color: #000000;
   border: 2px solid #000000;
   padding: 8px 16px;
@@ -8,6 +8,33 @@
   display: inline-block;
   transition: background-color 0.2s, color 0.2s;
   text-decoration: none;
+}
+
+.form-signin label {
+  font-weight: bold; /* Bold labels */
+}
+
+.form-signin input[type="text"],
+.form-signin input[type="password"] {
+  width: 100%; /* Full width input fields */
+  margin-bottom: 15px; /* Add space between input fields */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 3px; /* Slightly rounded corners */
+}
+
+.form-signin button {
+  width: 100%; /* Full width button */
+  padding: 10px; /* Add padding */
+  border: none; /* Remove default button border */
+  border-radius: 3px; /* Rounded corners */
+  background-color: #e47c05; /* Orange button background */
+  color: #fff; /* White text color */
+  font-size: 1.2em; /* Larger font size */
+  cursor: pointer; /* Add pointer cursor */
+}
+
+.form-signin button:hover {
+  background-color: #f7b66d; /* Darker orange on hover */
 }
 
 /* Hover effect for all buttons */
