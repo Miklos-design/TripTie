@@ -8,13 +8,14 @@
 {% block body_block %}
 <div class="jumbotron p-4">
     <div class="container">
-        <h1 class="jumbotron-heading">Login</h1>
     </div>
 </div>
 <link rel="stylesheet" href="{% static 'css/social.css' %}" type="text/css">
 
 
-<div class="container">
+<div class="container" style="width: 50%;">
+    <h1 class="jumbotron-heading">Login</h1>
+
     <form class="form-signin" role="form" method="post" action=".">
         {% csrf_token %}
 
