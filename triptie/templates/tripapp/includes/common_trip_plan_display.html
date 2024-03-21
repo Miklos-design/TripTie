@@ -4,7 +4,7 @@
 <section class="showcase">
 <link rel="stylesheet" href="{% static 'css/social.css' %}" type="text/css">
 {% if detailed_trip_plans %}
-    <div class="d-flex flex-column align-items-center wide-flex-container" style="padding-top: 1200px;">
+    <div class="d-flex flex-column align-items-center wide-flex-container" style="padding-top: 12px;">
     {% for detailed_trip_plan in detailed_trip_plans %}
         <div class="card mb" style="width: 90vw; max-width: 700px;">
         {% if detailed_trip_plan.trip_plan.image %}

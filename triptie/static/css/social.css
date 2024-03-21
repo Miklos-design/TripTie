@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(233, 234, 227); /* Same as the showcase background color */
+}
+
 /* General button styling */
 .btn, .btn-primary, .btn-secondary, .btn-info, input[type="submit"], input[type="button"], input[type="file"]::-webkit-file-upload-button {
   background-color: #fa9a1c;
@@ -84,19 +88,18 @@
 }
 
 .showcase {
-  position: absolute;
-  right: 0;
+  position: relative; /* Adjusted */
   width: 100%;
-  min-height: 100%;
   padding: 50px;
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  flex-direction: column; /* Added for vertical alignment of flex items */
+  justify-content: flex-start; /* Adjusted for column layout */
   background: rgb(215, 222, 191);
   background-attachment: scroll;
   transition: 0.5s;
   z-index: 2;
 }
+
 
 /* Text color styling for specific sections */
 .container .row .text-center p,
@@ -127,11 +130,19 @@ label[for="id_gender"],label[for="id_age"], label[for="id_picture"],label[for="i
   align-items: center; /* Center vertically if it's a flex container */
 }
 
+.profile-picture img {
+  width: 100%; /* Make the image fill the container */
+  height: auto; /* Maintain aspect ratio */
+  aspect-ratio: 1 / 1; /* Ensure the aspect ratio is 1:1 for a square */
+  border-radius: 50%; /* Apply rounded corners to make it circular */
+  object-fit: cover; /* Cover the container without stretching the image */
+}
+
 
 
 .profile-picture {
   width: 300px; /* Adjust the width as needed */
-  height: 700px; /* Adjust the height as needed */
+  height: 300px; /* Adjust the height as needed */
 }
 
 .wide-flex-container {
