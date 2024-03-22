@@ -6,10 +6,33 @@
 {% endblock %}
 
 {% block body_block %}
-    <form method="GET" action="{% url 'tripapp:trip_plan_search' %}">
-        <input type="text" name="query" placeholder="Enter your search query...">
-        <button class="btn btn-primary" type="submit">Search</button>
-    </form>
+<style>
+    /* Custom styles for the input field */
+    input[type="text"] {
+        width: 100%; /* Full width */
+        border: 2px solid #ccc; /* Border style */
+        border-radius: 5px; /* Rounded corners */
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        font-size: 16px; /* Font size */
+        transition: border-color 0.3s ease; /* Smooth transition for border color */
+    }
+
+    /* Custom styles for the input field placeholder */
+    input[type="text"]::placeholder {
+        color: #999; /* Placeholder text color */
+    }
+
+    /* Style when the input field is focused */
+    input[type="text"]:focus {
+        border-color: #66afe9; /* Border color when focused */
+        outline: none; /* Remove outline */
+    }
+</style>
+<form method="GET" action="{% url 'tripapp:trip_plan_search' %}" style="position: relative; z-index: 1000;">
+    <input type="text" name="query" placeholder="Enter your search query...">
+    <button class="btn btn-primary" type="submit">Search</button>
+</form>
+
 
     <div class="container mt-4">
         {% include 'tripapp/includes/common_trip_plan_display.html' %}

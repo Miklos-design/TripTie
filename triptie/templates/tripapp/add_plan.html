@@ -4,18 +4,21 @@
 {% block title_Block %}
     Add a Plan
 {% endblock %}
+
+{% block body_block %}
+
+</style>
 <video autoplay loop muted playsinline class="background-video">
-    <source src="{% static 'media/video.mp4' %}" type="video/mp4">
+    <source src="{% static 'media/social.mp4' %}" type="video/mp4">
     Your browser does not support the video tag.
 </video>
-{% block body_block %}
     <div class="centered-form">
         <div class="form-container">
             <div class="card">
                 <h5 class="card-header text-center">Add a New Trip Plan</h5>
-                <div class="card-body">
+                <div class="card-body" style="background-color: rgba(255, 255, 255, 0.7);">
                     <form action="{% url 'tripapp:add_plan' username %}" method="post" enctype="multipart/form-data">
-
+                        {% csrf_token %}
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
                             <input type="text" class="form-control" id="title" name="title"
